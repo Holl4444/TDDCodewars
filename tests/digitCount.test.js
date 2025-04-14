@@ -1,5 +1,5 @@
 import { describe, expect, it, test } from 'vitest';
-import nbDig from './digitCount';
+import nbDig from '../digitCount';
 
 describe('nbDig', () => {
   it('should throw a type error if either parameter is NaN', () => {
