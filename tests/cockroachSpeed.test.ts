@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import cockroachSpeed from './cockroachSpeed';
+import cockroachSpeed from '../cockroachSpeed';
 
 describe('Take speed in km/h and return it in cm/s rounded down to the nearest integer', () => {
     it('should return an integer', () => {
