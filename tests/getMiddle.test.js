@@ -1,5 +1,5 @@
 import { describe, test, it, expect } from 'vitest';
-import { getMiddle } from './getMiddle.js';
+import { getMiddle } from '../functions/getMiddle';
 
 describe('getMiddle()', () => {
   it('should return a single char from a string of uneven length', () => {

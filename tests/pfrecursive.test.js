@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import pfRecursive from '../pfRecursive';
+import pfRecursive from '../functions/pfRecursive';
 
 describe('should return boolean reflecting whether the given number is the product of multiplying two consecutive numbers in the fibonacci sequence', () => {
   it('should be a product of two consecutive fibonacci numbers', () => {

@@ -1,5 +1,5 @@
 import { describe, test, it, expect } from 'vitest';
-import twoSum from '../twoSum';
+import twoSum from '../functions/twoSum';
 
 describe('The function twoSum returns indexes of the numbers within an array that when summed together return the target number, as an array', () => {
     it('should return an array of two numbers', () => {

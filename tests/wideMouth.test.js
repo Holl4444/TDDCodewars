@@ -1,5 +1,5 @@
 import { describe, it, expect, test } from 'vitest';
-import wideMouth from '../wideMouth';
+import wideMouth from '../functions/wideMouth';
 
 describe('blah', () => {
     it('should return "wide" when input is "lion"', () => {

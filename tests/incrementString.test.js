@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { incrementString } from '../incrementString';
+import { incrementString } from '../functions/incrementString';
 
 describe('incrementString', () => {
   it('should return a string', () => {

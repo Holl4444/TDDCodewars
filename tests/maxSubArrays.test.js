@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import maxSubArray from '../maxSubArray';
+import maxSubArray from '../functions/maxSubArray';
 
 describe('tests for maxSubArray(). Return the sub array with the highest sum value from the input array', () => {
     it('Should return the only array value when it receives an array with one positive integer', () => {

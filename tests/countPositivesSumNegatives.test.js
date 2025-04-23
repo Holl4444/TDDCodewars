@@ -1,5 +1,5 @@
 import { describe, it, expect, test } from 'vitest';
-import countPositivesSumNegatives from './countPositivesSumNegatives.js';
+import countPositivesSumNegatives from '../functions/countPositivesSumNegatives';
 
 describe('Tests for countPositivesSumNegatives', () => {
   it('should return an array', () => {
