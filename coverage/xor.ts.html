@@ -25,14 +25,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">95.83% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>23/24</span>
+                <span class='fraction'>24/24</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>21/21</span>
+                <span class='fraction'>35/35</span>
             </div>
         
             
@@ -83,54 +83,99 @@
 <a name='L18'></a><a href='#L18'>18</a>
 <a name='L19'></a><a href='#L19'>19</a>
 <a name='L20'></a><a href='#L20'>20</a>
-<a name='L21'></a><a href='#L21'>21</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<a name='L21'></a><a href='#L21'>21</a>
+<a name='L22'></a><a href='#L22'>22</a>
+<a name='L23'></a><a href='#L23'>23</a>
+<a name='L24'></a><a href='#L24'>24</a>
+<a name='L25'></a><a href='#L25'>25</a>
+<a name='L26'></a><a href='#L26'>26</a>
+<a name='L27'></a><a href='#L27'>27</a>
+<a name='L28'></a><a href='#L28'>28</a>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a>
+<a name='L35'></a><a href='#L35'>35</a>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span></td><td class="text"><pre class="prettyprint lang-js">export default function xor(a: boolean | string | number, b: boolean | string | number): boolean {
-    if (typeof (a || b) !== 'boolean' &amp;&amp; typeof (a || b) !== 'string' &amp;&amp; typeof (a || b) !== 'number') {
-        throw new Error(`Invalid input`)
-    }
-    if (
-        (typeof a === 'string' &amp;&amp; a !== <span class="branch-0 cbranch-no" title="branch not covered" >'true' &amp;&amp; a !== 'false')</span>
-        || (typeof b === 'string' &amp;&amp; b !== 'true' &amp;&amp; b !== 'false')
-    ) {
-        throw new Error(`Invalid Input: only boolean values extended to include 'true', 'false, 0 and 1 accepted`)
-    }
-    if (
-        (typeof a === 'number' &amp;&amp; a !== 0 &amp;&amp; a !== 1)
-        || (typeof b === 'number' &amp;&amp; b !== 0 &amp;&amp; b !== 1)
-    ) {
-        throw new Error(`Invalid Input: only boolean values extended to include 'true', 'false, 0 and 1 accepted`)
-    }
-      if (a === b) {
-        return false;
-      }
-    return true;
-}</pre></td></tr></table></pre>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default function xor(
+  a: boolean | string | number,
+  b: boolean | string | number
+): boolean {
+  if (
+    typeof a !== 'boolean' &amp;&amp;
+    typeof a !== 'string' &amp;&amp;
+    typeof a !== 'number' ||
+    typeof b !== 'boolean' &amp;&amp;
+    typeof b !== 'string' &amp;&amp;
+    typeof b !== 'number'
+  ) {
+    throw new Error(`Invalid input`);
+  }
+  if (
+    (typeof a === 'string' &amp;&amp; a !== 'true' &amp;&amp; a !== 'false') ||
+    (typeof b === 'string' &amp;&amp; b !== 'true' &amp;&amp; b !== 'false')
+  ) {
+    throw new Error(
+      `Invalid Input: only boolean values extended to include 'true', 'false, 0 and 1 accepted`
+    );
+  }
+  if (
+    (typeof a === 'number' &amp;&amp; a !== 0 &amp;&amp; a !== 1) ||
+    (typeof b === 'number' &amp;&amp; b !== 0 &amp;&amp; b !== 1)
+  ) {
+    throw new Error(
+      `Invalid Input: only boolean values extended to include 'true', 'false, 0 and 1 accepted`
+    );
+  }
+  if (a === b) {
+    return false;
+  }
+  return true;
+}
+&nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-04-23T18:30:44.713Z
+                at 2025-04-29T13:43:47.580Z
             </div>
         <script src="prettify.js"></script>
         <script>

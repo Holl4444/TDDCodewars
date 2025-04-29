@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for findUniq.js</title>
+    <title>Code coverage report for skate.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="prettify.css" />
     <link rel="stylesheet" href="base.css" />
@@ -19,20 +19,20 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="index.html">All files</a> findUniq.js</h1>
+        <h1><a href="index.html">All files</a> skate.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/20</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>40/40</span>
+                <span class='fraction'>32/32</span>
             </div>
         
             
@@ -98,97 +98,76 @@
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a>
-<a name='L41'></a><a href='#L41'>41</a>
-<a name='L42'></a><a href='#L42'>42</a>
-<a name='L43'></a><a href='#L43'>43</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">6x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">35x</span>
+<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">34x</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">10x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">7x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">8x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">35x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default function findUniq(array) {
-  if (
-    !array ||
-    array.length &lt; 3 ||
-    !array.every(Number.isInteger) ||
-    !array.every(Number.isSafeInteger)
-  ) {
-    throw new Error(`Invalid Input`);
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">24x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">15x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">59x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-yes">13x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export default function skate(string: string) {
+  if (!string || string.length &lt; 1 || typeof string !== 'string') {
+    throw new Error(`Invalid input`);
   }
-  const uniq = {};
-  let countOfUniqueNums = 0;
-&nbsp;
-  for (const val of array) {
-    if (!(val in uniq)) countOfUniqueNums++;
-    // if uniq[val] doesn't exist it is undefined and so will be falsy
-    uniq[val] = uniq[val] ? uniq[val] + 1 : 1;
-&nbsp;
-    if (countOfUniqueNums === 3) {
-      throw new Error(`Max 2 unique numbers per array`);
+  const regex = /[^!@#$%^&amp;*()_+\-|&lt;&gt;.,';:"`~=?\/\\{}\[\]]/g;
+  const cleanedString = string.replaceAll(regex, '');
+  if (cleanedString.slice(0, 1) !== '_') {
+    throw new Error(`Invalid input`);
     }
 &nbsp;
-    if (countOfUniqueNums === 2) {
-      let foundMultiple = false;
-      for (const key in uniq) {
-        if (uniq[key] &gt; 1) {
-          foundMultiple = true;
-          break;
+    let count: number = 0;
+    let catchingAir = false;
+    const ramps = /\//; // identify individual dots and not /. ramps followed by a dot
+&nbsp;
+    const len = cleanedString.length
+    for (let i = 0; i &lt; len; i++) {
+        if (/\./.test(cleanedString[i])) {
+            if (!catchingAir) {
+                return -1;
+            }
         }
-      }
-&nbsp;
-      if (foundMultiple) {
-        for (const key in uniq) {
-          if (uniq[key] === 1) return Number(key);
-          }
-      } /* c8 ignore next */
+        if (ramps.test(cleanedString[i])) {
+            for (let j = i + 1; j &lt; cleanedString.length; j++) {
+                if (cleanedString[j] !== '.') {
+                    catchingAir = false;
+                    i += count;
+                    break;
+                }
+                count++;
+            }
+        }
     }
-  }
-  throw new Error('No unique value found');
+  return count % 2 === 0 ? 0 : 1;
 }
 &nbsp;
-&nbsp;
-// Line 35...The codewar logic states that there will always be a unique value but to cover the situation where we have only 2 values, neither of which is unique, we've had to steamroll vitest with the c8 command when it reaches what should be unreachable code.
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

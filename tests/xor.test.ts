@@ -26,6 +26,12 @@ describe('Evaluate two booleans using "exclusive or"', () => {
         expect(actual).toBe(expected);
     })
 
+    it('should throw error when both inputs are invalid strings', () => {
+      expect(() => xor('invalid1', 'invalid2')).toThrow(
+        "Invalid Input: only boolean values extended to include 'true', 'false, 0 and 1 accepted"
+      );
+    });
+
     it('should handle 0 and 1', () => {
         const a = 0;
         const b = 1;

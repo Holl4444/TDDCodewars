@@ -53,4 +53,17 @@ describe('countBits: return the number of "1"s in the binary representation of t
     const expected = 1;
     expect(actual).toBe(expected);
   });
+
+  it('should handle empty input', () => {
+  
+    const actual = () => (countBits as any)();
+    const expected = `No input detected`;
+    expect(actual).toThrow(expected);
+  });
+
+it('should reject floating point numbers', () => {
+  const float = 10.5;
+  const actual = () => countBits(float);
+  expect(actual).toThrow('Invalid input');
+});
 });

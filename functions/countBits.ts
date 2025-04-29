@@ -1,4 +1,7 @@
 export default function countBits(num: number | bigint) {
+    if (num === undefined || num === null) {
+        throw new Error(`No input detected`);
+    }
     if (typeof num === 'number') {
         if (!Number.isInteger(num)) {
             throw new Error(`Invalid input`);
