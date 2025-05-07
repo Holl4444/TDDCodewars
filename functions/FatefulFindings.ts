@@ -1,12 +1,10 @@
 export default function f(s: string) {
-    const AlphRegexMatch = /[A-Za-z]/g;
-    const AlphRegexTest = /[A-Za-z]/
+  const AlphRegexMatch = /[A-Za-z]/g;
+  const AlphRegexTest = /[A-Za-z]/;
   let position = s.indexOf('@');
   let dir = null;
   let order = '';
   let current: {};
-  let nextLeft: Gift | null = null;
-  let nextRight: Gift | null = null;
 
   interface Gift {
     [key: string]: number;
@@ -36,95 +34,33 @@ export default function f(s: string) {
     .filter((i) => i);
 
   while (leftGifts.length > 0 || rightGifts.length > 0) {
-    if (leftGifts.length < 1 && rightGifts.length < 1) {
-      return order;
+    let leftKey: string = ''; // Initialize with defaults
+    let rightKey: string = '';
+    let leftIndex: number = 0;
+    let rightIndex: number = 0;
+
+    if (leftGifts.length > 0) {
+      leftKey = Object.keys(leftGifts[0])[0];
+      leftIndex = Object.values(leftGifts[0])[0];
     }
 
-    if (leftGifts.length < 1) {
-      // First separate uppercase and lowercase letters
-      const lowerLetters = rightGifts.filter((gift) => {
-        const key = Object.keys(gift)[0];
-        return key.charCodeAt(0) > 96;
-      });
-
-      const upperLetters = rightGifts.filter((gift) => {
-        const key = Object.keys(gift)[0];
-        return key.charCodeAt(0) <= 96;
-      });
-
-      let lastGifts: string = '';
-
-      // Process lowercase letters first
-      for (let i = 0; i < lowerLetters.length; i++) {
-        const iKey = Object.keys(lowerLetters[i])[0];
-        const iPlusKey =
-          i < lowerLetters.length - 1 &&
-          Object.keys(lowerLetters[i + 1])[0];
-        const isLowerI = iKey.charCodeAt(0) > 96;
-        const isLowerIPlus = iPlusKey && iPlusKey.charCodeAt(0) > 96;
-
-        if (i < lowerLetters.length - 1 && isLowerI && isLowerIPlus) {
-          lastGifts += `${iPlusKey}${iKey}`;
-          i++;
-        } else {
-          lastGifts += iKey;
-        }
-      }
-
-      // Then append uppercase letters
-      for (let i = 0; i < upperLetters.length; i++) {
-        lastGifts += Object.keys(upperLetters[i])[0];
-      }
-
-      order += lastGifts;
-      return order;
+    if (rightGifts.length > 0) {
+      rightKey = Object.keys(rightGifts[0])[0];
+      rightIndex = Object.values(rightGifts[0])[0];
     }
 
-    if (rightGifts.length < 1) {
-      const lowerLetters = leftGifts.filter((gift) => {
-        const key = Object.keys(gift)[0];
-        return key.charCodeAt(0) > 96;
-      });
-
-      const upperLetters = leftGifts.filter((gift) => {
-        const key = Object.keys(gift)[0];
-        return key.charCodeAt(0) <= 96;
-      });
-
-      let lastGifts: string = '';
-
-      for (let i = 0; i < lowerLetters.length; i++) {
-        const iKey = Object.keys(lowerLetters[i])[0];
-        const iPlusKey =
-          i < lowerLetters.length - 1 &&
-          Object.keys(lowerLetters[i + 1])[0];
-        const isLowerI = iKey.charCodeAt(0) > 96;
-        const isLowerIPlus = iPlusKey && iPlusKey.charCodeAt(0) > 96;
-
-        if (i < lowerLetters.length - 1 && isLowerI && isLowerIPlus) {
-          lastGifts += `${iPlusKey}${iKey}`;
-          i++;
-        } else {
-          lastGifts += iKey;
-        }
-      }
-
-      for (let i = 0; i < upperLetters.length; i++) {
-        lastGifts += Object.keys(upperLetters[i])[0];
-      }
-
-      order += lastGifts;
-      return order;
-    }
-
-    const leftKey = Object.keys(leftGifts[0])[0];
-    const rightKey = Object.keys(rightGifts[0])[0];
-    const leftIndex = Object.values(leftGifts[0])[0];
-    const rightIndex = Object.values(rightGifts[0])[0];
-    const distToLeft = Math.abs(leftIndex - position);
-    const distToRight = Math.abs(rightIndex - position);
+    // Only calculate distances if we have gifts on that side
+    const distToLeft =
+      leftGifts.length > 0
+        ? Math.abs(leftIndex - position)
+        : Infinity;
+    const distToRight =
+      rightGifts.length > 0
+        ? Math.abs(rightIndex - position)
+        : Infinity;
 
     if (
+      rightGifts.length < 1 ||
       distToLeft < distToRight ||
       (distToLeft === distToRight &&
         leftKey.toUpperCase() === leftKey &&
@@ -139,8 +75,9 @@ export default function f(s: string) {
         position = leftIndex;
       }
     } else if (
+      leftGifts.length < 1 ||
       distToRight < distToLeft ||
-      (distToLeft === distToRight &&
+      (distToRight === distToLeft &&
         rightKey.toUpperCase() === rightKey &&
         leftKey.toUpperCase() !== leftKey) ||
       (distToRight === distToLeft &&
@@ -177,69 +114,86 @@ export default function f(s: string) {
       rightGifts.splice(0, 1);
     }
 
-    if (Object.keys(current)[0].charCodeAt(0) > 96) {
-      const distToBase = Math.abs(0 - position);
-      let foundSmallGift = false;
+    // Check if we're dealing with a lowercase letter
+    if (
+      Object.keys(current)[0].charCodeAt(0) > 96 &&
+      (leftGifts.length > 0 || rightGifts.length > 0)
+    ) {
+      let nextLeft: Gift | null = null;
+      let nextLeftIndex: number = 0; // Initialize with default
+      let nextRight: Gift | null = null;
+      let nextRightIndex: number = 0; // Initialize with default
+
       // Since we delete current on use
       if (leftGifts.length > 0) {
+        let foundSmallGift = false;
         for (
           let i = 0;
           i < leftGifts.length && !foundSmallGift;
           i++
         ) {
-          for (const [key, value] of Object.entries(leftGifts[i])) {
-            const isSmallGift = key.charCodeAt(0) > 96;
-            if (isSmallGift) {
-              nextLeft = leftGifts[i];
-              foundSmallGift = true;
-              break; // Break inner loop
-            }
+          const key = Object.keys(leftGifts[i])[0];
+          const isSmallGift = key.charCodeAt(0) > 96;
+
+          if (isSmallGift) {
+            nextLeft = leftGifts[i];
+            // Don't set nextLeftIndex here, we'll set it below if nextLeft is not null
+            foundSmallGift = true;
           }
         }
       }
 
-      foundSmallGift = false;
-
       if (rightGifts.length > 0) {
+        let foundSmallGift = false;
         for (
           let i = 0;
           i < rightGifts.length && !foundSmallGift;
           i++
         ) {
-          for (const [key, value] of Object.entries(rightGifts[i])) {
-            const isSmallGift = key.charCodeAt(0) > 96;
-            if (isSmallGift) {
-              nextRight = rightGifts[i];
-              foundSmallGift = true;
-              break;
-            }
+          const key = Object.keys(rightGifts[i])[0];
+          const isSmallGift = key.charCodeAt(0) > 96;
+          if (isSmallGift) {
+            nextRight = rightGifts[i];
+            // Don't set nextRightIndex here, we'll set it below if nextRight is not null
+            foundSmallGift = true;
           }
         }
       }
 
-      foundSmallGift = false;
-      let distToNextLeft: number;
-      let distToNextRight: number;
-      let distFromRightToBase: number;
-      let distFromLeftToBase: number;
+      const distToBase = Math.abs(position);
+      let distToNextLeft: number = Infinity; // Initialize with default
+      let distToNextRight: number = Infinity; // Initialize with default
+      let baseToAnyGiftRight: number = Infinity; // Initialize with default
+      let baseToAnyGiftLeft: number = Infinity; // Initialize with default
+
+      if (leftGifts.length > 0) {
+        baseToAnyGiftLeft = Math.abs(Object.values(leftGifts[0])[0]);
+      }
+
+      if (rightGifts.length > 0) {
+        baseToAnyGiftRight = Math.abs(
+          Object.values(rightGifts[0])[0]
+        );
+      }
 
       if (nextLeft !== null) {
-        const nextLeftIndex: number = Object.values(nextLeft)[0];
+        nextLeftIndex = Object.values(nextLeft)[0];
         distToNextLeft = Math.abs(position - nextLeftIndex);
       }
 
       if (nextRight !== null) {
-        const nextRightIndex: number = Object.values(nextRight)[0];
+        nextRightIndex = Object.values(nextRight)[0];
         distToNextRight = Math.abs(position - nextRightIndex);
-        // from zero
-        distFromRightToBase = nextRightIndex;
       }
 
       // if its as close or closer than from its position to base or
       // closer to current position that from base to the next closest on the right.
       if (
-        (dir === 'left' && distToNextLeft <= distToBase) ||
-        (dir === 'left' && distToNextLeft < distFromRightToBase)
+        nextLeft !== null &&
+        ((dir === 'left' && distToNextLeft <= distToBase) ||
+          (dir === 'left' &&
+            nextRight !== null &&
+            distToNextLeft < baseToAnyGiftRight))
       ) {
         const nextLeftKey = Object.keys(nextLeft)[0];
         const nextLeftVal = Object.values(nextLeft)[0];
@@ -255,8 +209,11 @@ export default function f(s: string) {
       }
 
       if (
-        (dir === 'right' && distToNextRight <= distToBase) ||
-        (dir === 'right' && distToNextRight < distFromLeftToBase)
+        nextRight !== null &&
+        ((dir === 'right' && distToNextRight <= distToBase) ||
+          (dir === 'right' &&
+            nextLeft !== null &&
+            distToNextRight < baseToAnyGiftLeft))
       ) {
         const nextRightKey = Object.keys(nextRight)[0];
         const nextRightVal = Object.values(nextRight)[0];
@@ -270,14 +227,11 @@ export default function f(s: string) {
       } else {
         position = 0;
       }
+      nextRight = null;
+      nextLeft = null;
     }
-    nextLeft = null;
-    nextRight = null;
   }
-    console.log(order);
-    return order;
+  return order;
 }
 
-
-
-f('...b.Za..@........');
+f('ccBC.BaAABX.x@CZB.ZxCX.xBZ')

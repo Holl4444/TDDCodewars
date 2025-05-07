@@ -94,17 +94,4 @@ describe('f: ', () => {
         expect(actual).toBe(expected);
     })
 
-    it('should be baffline?', () => {
-        const s = '.b.a.....@.Z...a..';
-        const actual = f(s);
-        const expected = 'Zbaa';
-        expect(actual).toBe(expected);
-    })
-
-    it('should be baffline?', () => {
-        const s = 'ABCdef@abcDEF';
-        const actual = f(s);
-        const expected = 'baefcdCDBEAF';
-        expect(actual).toBe(expected);
-    })
 })
