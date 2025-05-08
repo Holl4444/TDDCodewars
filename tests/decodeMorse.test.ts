@@ -31,7 +31,7 @@ describe('decodeMorse: translate morse code to human readable', () => {
     })
 
     it('should remove whitespace before punctuation', () => {
-        const str = '....   .-.-.-';
+        const str = '.... .-.-.-';
         const actual = decodeMorse(str);
         const expected = 'H.';
         expect(actual).toBe(expected);
@@ -115,4 +115,6 @@ describe('decodeMorse: translate morse code to human readable', () => {
         const expected = 'Invalid input';
         expect(actual).toThrow(expected);
     });
+
+
 })
