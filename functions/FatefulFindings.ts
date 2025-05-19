@@ -233,5 +233,3 @@ export default function f(s: string) {
   }
   return order;
 }
-
-f('ccBC.BaAABX.x@CZB.ZxCX.xBZ')
